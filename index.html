@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PK Battle Scheduler</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app" data-sites-preview-theme="custom">
+<main>
+  <header class="hero">
+    <div class="eyebrow">Monthly booking calendar</div>
+    <h1>PK Battle Scheduler</h1>
+    <p>Select up to three dates in one booking. Choose a battle time for each date, then confirm them together under one name or ID.</p>
+  </header>
+  <div class="layout">
+    <section class="panel" aria-label="Calendar">
+      <div class="panel-head"><h2>Choose up to 3 dates</h2><div class="month-controls"><button class="icon-btn" id="prevMonth" aria-label="Previous month">‹</button><strong id="monthLabel"></strong><button class="icon-btn" id="nextMonth" aria-label="Next month">›</button></div></div>
+      <div class="weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div class="calendar" id="calendar"></div>
+      <div class="legend"><span><i class="dot"></i> Available</span><span><i class="dot red"></i> Fully booked</span><span><i class="dot gold"></i> Your birthday</span></div>
+      <p class="footnote">Click up to 3 dates to select them for one booking. Regular bookings open from the 5th day onward; days 1–4 are only selectable when the date is your birthday. Past dates cannot be booked.</p>
+    </section>
+    <section class="panel" aria-label="Booking form">
+      <div class="panel-head"><h2>Booking details</h2></div>
+      <form id="bookingForm" class="form-grid">
+        <div><label for="nameId">Your name or ID</label><input id="nameId" name="nameId" required maxlength="80" placeholder="Enter your name or player ID" /><p class="hint" id="monthlyLimitHint">You may book up to 3 different dates per month.</p></div>
+        <div><label>Selected dates and battle times</label><div class="selected-date" id="selectedDate">Choose up to 3 dates on the calendar</div><div id="dateTimeChoices" class="form-grid" style="margin-top:10px"></div><p class="hint" id="timeHint">Select dates on the calendar, then choose a time for each date.</p></div>
+        <div class="birthday-box"><label for="birthday">🎂 Birthday (optional)</label><input id="birthday" type="date" /><p class="hint">Enter your birthday to mark it on the calendar. If it falls in the month shown, you can book that exact date even if it is on the 1st–4th.</p></div>
+        <div><label for="comment">Special comment / birthday note (optional)</label><textarea id="comment" maxlength="400" placeholder="Example: It's my birthday this month! Any notes for your battle..."></textarea><p class="hint">Add a note if your selected battle date is your birthday, or include any other booking details.</p></div>
+        <div class="notice" id="notice" role="status"></div>
+        <button class="primary-btn" type="submit">Confirm PK battle booking</button>
+      </form>
+    </section>
+  </div>
+  <section class="panel bookings-panel">
+    <div class="panel-head"><h2>Bookings this month</h2><span id="bookingCount" class="hint"></span></div>
+    <div class="booking-list" id="bookingList"></div>
+    <div class="actions" style="margin-top:14px"><button class="secondary-btn" id="clearBtn" type="button">Clear local demo data</button></div>
+    <p class="footnote">Bookings are grouped under each person's name or ID, with all their booked PK dates and times listed in one column. Demo bookings are saved in this browser on this device.</p>
+  </section>
+</main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
